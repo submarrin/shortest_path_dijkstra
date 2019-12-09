@@ -22,6 +22,7 @@ def find_shortest_path(matr, start, finish):
     final_distance = [32767]*n
     final_distance[start] = 0
     set_not_visited.remove(start)
+    print("set not visited: ", set_not_visited)
     for vertex in set_not_visited:
         final_distance[vertex] = matr[start][vertex]
         previous[vertex] = start
@@ -36,7 +37,9 @@ def find_shortest_path(matr, start, finish):
             if final_distance[vertex_with_max_distance] + matr[vertex_with_max_distance][vertex] > final_distance[vertex]:
                 final_distance[vertex] = final_distance[vertex_with_max_distance] + matr[vertex_with_max_distance][vertex]
                 previous[vertex] = vertex_with_max_distance
-    return 0
+        print(previous)
+    print(final_distance)
+    return final_distance[finish]
 
 
 if __name__ == "__main__":
